@@ -1,3 +1,8 @@
+-- I was originally hoping to be able to automatically select all albums, but that proved too
+--  complicated. I gave up, and intead have an input list of albums to export. To use this
+-- script, create a file, in Unix format, one album per line (with carriage returns), of the
+-- albums you want to export.
+
 use script "Photos Utilities"
 use scripting additions
 
@@ -34,6 +39,11 @@ on makeFolder(base, tPath)
 	log folderPath
 	do shell script "mkdir -p " & folderPath
 end makeFolder
+
+on exportAlbum(theAlbum, folderName)
+	my makeFolder(folderName) -- create a folder named (the name of this album) in dest
+	export (get media items of album theAlbum) to (folderName as alias)
+end exportAlbum
 
 on run
 	set baseDir to "/Users/luke/Desktop/Photo Export/" as POSIX file as text -- the destination folder (use a valid path)

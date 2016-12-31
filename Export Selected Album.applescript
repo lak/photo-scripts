@@ -8,7 +8,7 @@ tell application "Photos"
 		repeat with tName in albNames
 			set tFolder to dest & tName
 			my makeFolder(tFolder) -- create a folder named (the name of this album) in dest  
-			export (get media items of album tName) to (tFolder as alias) without using originals
+			export (get media items of album tName) to (tFolder as alias)
 		end repeat
 	end if
 end tell
