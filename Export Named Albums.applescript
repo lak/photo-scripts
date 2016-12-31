@@ -31,11 +31,11 @@ on run
 		
 		-- Make each of the top level folders
 		repeat with theAlbum in albumList
-			if theAlbum is not ""
+			if theAlbum is not "" then
 				set theFolder to (baseDir & theAlbum)
 				my makeFolder(theFolder)
 				log "Trying to export " & theAlbum
-				export (get media items of album theAlbum) to (theFolder as alias)
+				export (get media items of album theAlbum) to (theFolder as alias) with using originals
 			end if
 		end repeat
 	end tell
